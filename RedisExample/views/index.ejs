@@ -1,0 +1,56 @@
+<style>
+    .del:checked + span {
+        color : red;    
+    }
+    .task-list {
+        list-style: none;
+    }
+</style>
+
+
+<form method="post" action="/task/add">
+    <label>Add Task : </label>
+    <input type="text" name="task" placeholder="Add Task" />
+    <input type="submit" />
+</form>
+
+
+<%= title %>
+
+<form method="POST" action="/task/delete">
+    <ul class="task-list">
+        <% tasks.forEach(function(task) { %>
+        <li>
+            <label>
+                <input type="checkbox" class="del" name="tasks" value="<%=task%>">
+                <span><%= task %></span>
+            </label>
+        </li>
+        <% }) %>
+    </ul>
+
+    <input type="submit" value="Remove" />
+</form>
+
+<h3>Next Business Call</h3>
+<label>Name : </label><%=call.name%><br>
+<label>Company : </label><%=call.company%><br>
+<label>Phone : </label><%=call.phone%><br>
+<label>Time : </label><%=call.time%><br>
+
+<h3>Edit Next Call</h3>
+<form method="POST" action="/call/edit">
+    <label>Contact Name</label></br>
+    <input type="text" name="name" placeholder="Contact Name" />
+    <br><br>
+    <label>Company</label></br>
+    <input type="text" name="company" placeholder="Company" />
+    <br><br>
+    <label>Phone</label></br>
+    <input type="text" name="phone" placeholder="Phone" />
+    <br><br>
+    <label>Date & Time</label></br>
+    <input type="text" name="time" placeholder="Time" />
+    <br><br>
+    <input type="submit" value="Edit"/>
+</form>
